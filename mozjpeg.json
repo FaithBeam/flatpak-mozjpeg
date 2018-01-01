@@ -1,0 +1,37 @@
+{
+    "app-id": "com.github.mozjpeg",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.6",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "cjpeg",
+    "finish-args": [
+        /* We want full fs access so we can read the files */
+        "--filesystem=host"
+    ],
+    "cleanup": [ "/include", "*.la", "*.a" ],
+    "modules": [
+        {
+            "name": "yasm",
+            "cleanup": [ "/bin", "/lib", "/share" ],
+            "sources" : [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/yasm/yasm/archive/v1.3.0.tar.gz",
+                    "sha256": "f708be0b7b8c59bc1dbe7134153cd2f31faeebaa8eec48676c10f972a1f13df3"
+                }
+            ]
+        },
+        {
+            "name": "mozjpeg",
+            "cleanup": [ "/include/*", "/lib/pkgconfig", "/lib/debug" ],
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/mozilla/mozjpeg/releases/download/v3.2/mozjpeg-3.2-release-source.tar.gz",
+                    "sha256": "8aecc1ecad447a73ae01b9a546e99142345e5a92838d84af425f2b19202e7b73"
+                }
+            ]
+        }
+    ]
+}
