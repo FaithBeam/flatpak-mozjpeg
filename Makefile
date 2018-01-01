@@ -5,9 +5,9 @@ pre-build:
 	flatpak install flathub org.freedesktop.Platform//1.6 org.freedesktop.Sdk//1.6
 build:
 	flatpak-builder --repo=repo mozjpeg mozjpeg.json
-	flatpak build-bundle repo mozjpeg.flatpak com.github.mozjpeg
+	flatpak build-bundle repo mozjpeg-3.2.flatpak com.github.mozjpeg
 install:
-	flatpak install --user --bundle mozjpeg.flatpak
+	flatpak install --user --bundle mozjpeg-3.2.flatpak
 uninstall:
 	flatpak uninstall --user com.github.mozjpeg
 clean:
