@@ -27,6 +27,8 @@ flatpak install --user --bundle the-file-you-just-downloaded.flatpak
 ### Usage
 ~~~~
 flatpak run com.github.mozjpeg [options] input-image.jpg > output-image.jpg
+OR
+com.github.mozjpeg [options] input-image.jpg > output-image.jpg
 ~~~~
 
 ### Uninstalling
