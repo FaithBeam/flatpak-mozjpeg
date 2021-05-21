@@ -20,7 +20,7 @@ make install
 Download your preferred version on the releases page
 ~~~~
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.freedesktop.Platform//1.6 org.freedesktop.Sdk//1.6
+flatpak install flathub org.freedesktop.Platform//20.08
 flatpak install --user --bundle the-file-you-just-downloaded.flatpak
 ~~~~
 
