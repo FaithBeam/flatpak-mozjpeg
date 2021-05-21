@@ -1,0 +1,37 @@
+app-id: com.github.mozjpeg
+runtime: org.freedesktop.Platform
+runtime-version: "20.08"
+sdk: org.freedesktop.Sdk
+command: mozjpeg
+finish-args:
+  - --filesystem=host
+cleanup:
+  - "/include"
+  - "*.la"
+  - "*.a"
+modules:
+  - name: yasm
+    cleanup:
+      - "/bin"
+      - "/lib"
+      - "/share"
+    sources:
+      - type: git
+        url: "https://github.com/yasm/yasm.git"
+  - name: mozjpeg
+    cleanup:
+      - "/include/*"
+      - "/lib/pkgconfig"
+      - "/lib64/pkgconfig"
+      - "/lib64/cmake"
+      - "/lib/debug"
+      - "/share"
+    no-autogen: true
+    buildsystem: simple
+    build-commands:
+      - "cmake -DCMAKE_INSTALL_PREFIX:PATH=/app -G'Unix Makefiles' -DENABLE_STATIC=FALSE -DPNG_SUPPORTED=ON ."
+      - "make install -j $FLATPAK_BUILDER_N_JOBS"
+      - "ln -s /app/bin/cjpeg /app/bin/mozjpeg"
+    sources:
+      - type: git
+        url: "https://github.com/mozilla/mozjpeg.git"
